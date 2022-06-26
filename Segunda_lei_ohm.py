@@ -11,13 +11,11 @@ def calculo_tensao():
 def calculo_resistencia():
     v = float(input("Digite o valor da tensão: "))
     i = float(input("Digite o valor da Corrente: "))
-
     return round(v / i,3)
 
 def calculo_potencia():
     v = float(input("Digite o valor da tensão: "))
     i = float(input("Digite o valor da Corrente: "))
-
     return round(v * i,3)
 
 def entrada():
@@ -49,7 +47,6 @@ def selecao(letra):
             p = calculo_potencia()
             print("O valor da potência é ", p, "W")
             return
-
     return "S"
 
 def main():
