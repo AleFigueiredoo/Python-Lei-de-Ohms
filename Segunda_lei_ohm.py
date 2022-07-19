@@ -1,29 +1,31 @@
 def calculo_corrente():
-    r = float(input("Digite o valor da resistência em Ohms: "))
-    v = float(input("Digite o valor da tensão: "))
-    return round(v / r,3)
+    r, v = input("Entre com valor da resistência e tensão separado por virgula.\n").split(",")
+    resultado = round(float(v)/float(r),3)
+    return resultado
 
 def calculo_tensao():
-    r = float(input("Digite o valor da resistência em Ohms: "))
-    i = float(input("Digite o valor da Corrente: "))
-    return round(r * i)
+    r, i = input("Entre com valor da resistência e corrente separado por virgula.\n").split(",")
+    resultado = round(float(r) * float(i))
+    return resultado
 
 def calculo_resistencia():
-    v = float(input("Digite o valor da tensão: "))
-    i = float(input("Digite o valor da Corrente: "))
-    return round(v / i,3)
+    v, i = input("Entre com valor da tensão e corrente separado por virgula.\n").split(",")
+    resultado = round(float(v) / float(i),3)
+    return resultado
 
 def calculo_potencia():
-    v = float(input("Digite o valor da tensão: "))
-    i = float(input("Digite o valor da Corrente: "))
-    return round(v * i,3)
+    v, i = input("Entre com valor da tensão e corrente separado por virgula.\n").split(",")
+    resultado = round(float(v) * float(i),3)
+    return resultado
 
 def entrada():
-    letra = input("Digite:\n\"R\" para resistência   "
-              "\n\"I\" para corrente  "
-              "\n\"V\" para tensão "
-              "\n\"P\" para potência  "
-              "\n\"S\" para sair - ").upper()
+    print(f"** Escolha a opção que deseja calcular. **\n"
+          f"'R' para resistência\n"
+          f"'I' para corrente\n"
+          f"'V' para tensão\n"
+          f"'P' para potência\n"
+          f"'E' para sair")
+    letra = input(f"Selecione a opção!\n").upper()
     return letra
 
 def selecao(letra):
@@ -47,14 +49,17 @@ def selecao(letra):
             p = calculo_potencia()
             print("O valor da potência é ", p, "W")
             return
-    return "S"
+    return
 
 def main():
     letra = entrada()
-    while letra != "S":
+    while letra != "E" and letra != "N":
         calculo = selecao(letra)
-        print()
-        letra = entrada()
+        continua = input(f"Deseja novo Calculo? (S/N)\n").upper()
+        if continua == "S":
+            letra = entrada()
+        else:
+            letra = continua
     print("Fim do calculo !")
 
 main()
